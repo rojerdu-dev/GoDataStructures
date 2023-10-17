@@ -31,7 +31,7 @@ func (q *Queue) Length() int {
 
 func (q *Queue) Peek() (string, error) {
 	if q.IsEmpty() {
-		return 0, ErrEmptyQueue
+		return "", ErrEmptyQueue
 	}
 	return q.Elements[0], nil
 }
