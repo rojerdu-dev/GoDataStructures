@@ -5,6 +5,8 @@ import (
 	"fmt"
 )
 
+var ErrNotExist = errors.New("Item doesn't exist in set")
+
 type Set struct {
 	Items map[string]struct{}
 }
@@ -24,7 +26,7 @@ func (s *Set) Add(item string) {
 // Remove item from set
 func (s *Set) Remove(item string) error {
 	if _, exists := s.Items[item]; !exists {
-		return errors.New("item not found in set")
+		return ErrNotExist
 	}
 	delete(s.Items, item)
 	return nil
